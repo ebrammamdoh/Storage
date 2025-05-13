@@ -13,7 +13,7 @@ public static class IdentityDI
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
-                    ValidIssuer = "identity",
+                    ValidIssuer = configuration.GetValue<string>("Jwt:Issuer"),
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.GetValue<string>("Jwt:Key")))
                 };
             });
